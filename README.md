@@ -1,2 +1,2 @@
 # publikt
-Just a repo to test semantic versioning
+Just a repo to test gradle
