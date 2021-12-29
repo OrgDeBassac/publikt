@@ -1,0 +1,32 @@
+plugins {
+    id 'org.gradle.playframework' version '0.12'
+}
+
+def playVersion = '2.6.25'
+def scalaVersion = System.getProperty("scala.binary.version", /* default = */ "2.12")
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'lightbend-maven-release'
+        url 'https://repo.lightbend.com/lightbend/maven-releases'
+    }
+    ivy {
+        name 'lightbend-ivy-release'
+        url 'https://repo.lightbend.com/lightbend/ivy-releases'
+        layout 'ivy'
+    }
+}
+
+version = 'my-SNAPSHOT'
+
+dependencies {
+    implementation "com.typesafe.play:play-guice_$scalaVersion:$playVersion"
+    implementation "com.typesafe.play:play-logback_$scalaVersion:$playVersion"
+    implementation "com.typesafe.play:play-ahc-ws_$scalaVersion:$playVersion"
+    implementation "com.typesafe.play:play-ehcache_$scalaVersion:$playVersion"
+    runtimeOnly 'ch.qos.logback:logback-classic:1.1.3'
+    testImplementation "org.scalatestplus.play:scalatestplus-play_$scalaVersion:5.0.0"
+}
+
+//targetCompatibility = "1.8"
